@@ -8,7 +8,7 @@ function BasicNavbar({ handleFileNameChange, loading, ...props }) {
 
 
   return (
-    <Navbar bg="light" expand="lg" >
+    <Navbar data-testid='basic-navbar-1' bg="light" expand="lg" >
       <Container>
         <Navbar.Brand href="#home">React Test App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

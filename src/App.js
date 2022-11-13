@@ -3,27 +3,30 @@ import { Container } from "react-bootstrap";
 import BasicNavbar from "./components/basic-navbar";
 import BasicTable from "./components/basic-table";
 import { getData } from "./services/files";
+import { isLoading, notLoading } from './actions/loading';
+import { useDispatch } from 'react-redux';
 
 
 function App() {
   const [fileName, setFileName] = useState("")
   const [files, setFiles] = useState([])
-  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
 
   const handleFileNameChange = (value) => {
     setFileName(value)
   }
 
+  //Request the files
   useEffect(() => {
-    setLoading(true)
+    dispatch(isLoading())
     const getFiles = async () => {
       try {
         const res = await getData(fileName)
         setFiles(res.data)
-        setLoading(false)
+        dispatch(notLoading())
       } catch (e) {
         console.log(e)
-        setLoading(false)
+        dispatch(notLoading())
       }
     }
     getFiles()
@@ -32,9 +35,9 @@ function App() {
 
   return (
     <>
-      <BasicNavbar handleFileNameChange={handleFileNameChange} loading={loading} />
+      <BasicNavbar handleFileNameChange={handleFileNameChange} />
       <Container fluid>
-        <BasicTable files={files} loading={loading} />
+        <BasicTable files={files} />
       </Container>
     </>
   );

@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { getList } from '../../services/files';
+import { useSelector } from 'react-redux';
 
-function BasicNavDropdown({ handleFileNameChange, loading, ...props }) {
+function BasicNavDropdown({ handleFileNameChange, ...props }) {
+    const loading = useSelector(state => state)
     const [list, setList] = useState([])
     const [selectedFile, setSelectedFile] = useState(['All files'])
     const handleSelectedFileChange = (value) => {
         setSelectedFile(value)
         handleFileNameChange(value === 'All files' ? "" : value)
-
     }
 
     useEffect(() => {
         const getFiles = async () => {
-            const res = await getList()
-            setList(res.data?.files)
-            console.log(res.data)
+            try {
+                const res = await getList()
+                setList(res.data?.files)
+            } catch (e) {
+                console.log(e)
+            }
         }
         getFiles()
     }, []
@@ -23,14 +27,17 @@ function BasicNavDropdown({ handleFileNameChange, loading, ...props }) {
 
     return (
         <NavDropdown title={selectedFile} id="basic-nav-dropdown" disabled={loading}>
-            <NavDropdown.Item onClick={() => handleSelectedFileChange("All files")}>All files</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => handleSelectedFileChange("All files")}>
+                All files
+            </NavDropdown.Item>
             {list.map((file, index) => {
-
-                return (<NavDropdown.Item key={index} onClick={() => handleSelectedFileChange(file)}>{file}</NavDropdown.Item>)
-
-
+                return (
+                    <NavDropdown.Item
+                        key={index}
+                        onClick={() => handleSelectedFileChange(file)}>{file}
+                    </NavDropdown.Item>
+                )
             })
-
             }
         </NavDropdown>
     );

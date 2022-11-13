@@ -2,8 +2,11 @@ import Table from 'react-bootstrap/Table';
 import BasicTableHead from './basic-table/basic-table-head';
 import BasicTablePlaceholder from './basic-table/basic-table-placeholder';
 import BasicTableRow from './basic-table/basic-table-row';
+import { useSelector } from 'react-redux';
 
-function BasicTable({ files, loading, ...props }) {
+function BasicTable({ files, ...props }) {
+  const loading = useSelector(state => state)
+
   return (
     <Table data-testid='basic-table-1' striped bordered hover>
       <BasicTableHead />
@@ -37,7 +40,6 @@ function BasicTable({ files, loading, ...props }) {
 }
 BasicTable.defaultProps = {
   files: [],
-  loading: false
 }
 
 export default BasicTable;

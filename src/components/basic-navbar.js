@@ -4,8 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import BasicNavDropdown from './basic-navbar/basic-navdropdown';
 
-function BasicNavbar({ handleFileNameChange, loading, ...props }) {
-
+function BasicNavbar({ handleFileNameChange, ...props }) {
 
   return (
     <Navbar data-testid='basic-navbar-1' bg="light" expand="lg" >
@@ -14,7 +13,7 @@ function BasicNavbar({ handleFileNameChange, loading, ...props }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <BasicNavDropdown handleFileNameChange={handleFileNameChange} loading={loading} />
+            <BasicNavDropdown handleFileNameChange={handleFileNameChange} />
           </Nav>
         </Navbar.Collapse>
       </Container>

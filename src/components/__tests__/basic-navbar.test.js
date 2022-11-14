@@ -5,7 +5,7 @@ import store from '../../store/store';
 
 const render = component => {
     rtlRender(
-    <Provider store={store()}>
+    <Provider store={store}>
         {component}
     </Provider>
 )}

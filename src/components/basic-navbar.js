@@ -7,7 +7,7 @@ import BasicNavDropdown from './basic-navbar/basic-navdropdown';
 function BasicNavbar({ handleFileNameChange, ...props }) {
 
   return (
-    <Navbar data-testid='basic-navbar-1' bg="light" expand="lg" >
+    <Navbar data-testid='basic-navbar-1' expand="lg"  style={{backgroundColor: "#FF6666", color:"withe"}} >
       <Container>
         <Navbar.Brand href="#home">React Test App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

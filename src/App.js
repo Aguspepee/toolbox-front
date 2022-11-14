@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <BasicNavbar handleFileNameChange={handleFileNameChange} />
-      <Container fluid>
+      <Container fluid className="p-4">
         <BasicTable files={files} />
       </Container>
     </>

@@ -14,6 +14,7 @@ afterEach(() => {
     cleanup()
 })
 
+//Some basic tests
 test('Should render basic-table with no files', () => {
     render(<BasicTable />);
     const basicTableElement = screen.getByTestId('basic-table-1');

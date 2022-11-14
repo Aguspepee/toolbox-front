@@ -14,7 +14,8 @@ afterEach(() => {
     cleanup()
 })
 
-test('Should render basic-navbar with no files', () => {
+//Some basic tests
+test('Should render basic-navbar', () => {
     render(<BasicNavbar />);
     const basicNavbarElement = screen.getByTestId('basic-navbar-1');
     expect(basicNavbarElement).toBeInTheDocument();
